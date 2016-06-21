@@ -10,7 +10,9 @@
         <h5 class="content-group-lg">Login to your account <small class="display-block">Enter your credentials</small></h5>
     </div>
     {{ wtf.quick_form(form) }}
+
     <div class="content-divider text-muted form-group"><span>Don't have an account?</span></div>
-    <a href="{{ url_for('signup') }}" class="btn bg-slate btn-block btn-lg content-group">Register</a>
+    <a href="{{ url_for('auth.signup') }}" class="btn bg-slate btn-block btn-lg content-group">Register</a>
 </div>
 {% endblock %}
+<!-- { url_for('auth.signup') }}-!>

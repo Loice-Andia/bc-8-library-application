@@ -1,5 +1,6 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
+os.environ['DATABASE_URL'] = "postgresql://lolo:lolo@localhost:5432/library_application"
 
 
 class Config:
@@ -19,7 +20,7 @@ class DevelopementConfig(Config):
     '''
     DEBUG = True
     DEBUG_TB_INTERCEPT_REDIRECTS = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql://lolo:lolo@localhost:5432/library_application'
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
@@ -29,7 +30,7 @@ class ProductionConfig(Config):
     '''
     PORT = int(os.environ.get("PORT", 5000))
     HOST = '0.0.0.0'
-    SQLALCHEMY_DATABASE_URI = 'postgresql://lolo:lolo@localhost:5432/library_application'
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
