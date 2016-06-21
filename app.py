@@ -1,16 +1,15 @@
 from flask import Flask, render_template, request
+from flask_login import login_required
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import PasswordType, force_auto_coercion
 import passlib
 
-'''
-from flask.ext.sqlalchemy import create_engine
-engine = create_engine('postgresql+psycopg2://lolo:tiger@localhost/mydatabase')
-'''
+
 force_auto_coercion()
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://lolo:lolo@localhost:5432/library_application'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
 
@@ -49,6 +48,11 @@ def index():
 def signup():
     return render_template('signup.html')
 
+
+@app.route('/memberdashboard')
+@login_required
+def memberdashboard():
+    return render_template("dashboard.html")
 
 # Save user details to database and send to dashboard page
 @app.route('/authenticate', methods=['POST'])
