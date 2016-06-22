@@ -1,5 +1,5 @@
 from flask import render_template, flash
-from flask.ext.login import login_required, current_user
+from flask_login import login_required
 from . import dashboard
 from .. import db
 from ..models import Book
@@ -7,7 +7,7 @@ from ..models import Book
 
 
 @dashboard.route('/view_books')
-#@login_required
+@login_required
 def view_books():
     '''View function to return all books.
     '''

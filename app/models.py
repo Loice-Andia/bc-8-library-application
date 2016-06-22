@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_login import login_required, logout_user, LoginManager, UserMixin
+from flask_login import LoginManager, UserMixin
 from . import db
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import PasswordType, force_auto_coercion
@@ -10,7 +10,7 @@ import passlib
 force_auto_coercion()
 
 
-class User(UserMixin,db.Model):
+class User(UserMixin, db.Model):
 
     __tablename__ = "user"
 
