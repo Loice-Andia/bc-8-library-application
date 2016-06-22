@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Add Book{% endblock %}
+
+{% block page_content %}
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">Add New Book</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+			    <li><a data-action="collapse"></a></li>
+			    <li><a data-action="reload"></a></li>
+			    <li><a data-action="close"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		
+    {{ wtf.quick_form(form) }}
+    
+</div>
+</div>
+
+{% endblock %}

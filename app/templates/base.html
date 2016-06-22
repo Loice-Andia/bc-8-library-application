@@ -91,17 +91,78 @@
 
         <!-- Page content -->
         <div class="page-content">
+        {% if current_user.is_authenticated %}
+
+        <!-- Main sidebar -->
+            <div class="sidebar sidebar-main">
+                <div class="sidebar-content">
+                
+
+                    <!-- User menu -->
+                    <div class="sidebar-user">
+                        <div class="category-content">
+                            <div class="media">
+                                <div class="media-body">
+                                    <span class="media-heading text-semibold" >{{ current_user.name|capitalize }}</span>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /user menu -->
+
+
+                    <!-- Main navigation -->
+                    <div class="sidebar-category sidebar-category-visible">
+
+                        <div class="category-content no-padding">
+                            <ul class="navigation navigation-main navigation-accordion">
+
+                                <!-- Main -->
+                                <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+                                <li class=""><a href="#">  <i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                                <li><a href="{{ url_for('dashboard.view_books') }}">Book list</a></li>
+                                <li><a href="{{ url_for('dashboard.my_books') }}">My Books</a></li>
+                                {% if current_user.is_admin %}
+                                <li><a href="{{ url_for('admin.add_book') }}">Add a book</a></li>
+                                <li><a href="{{ url_for('admin.view_borrowed_books') }}">Borrowed books</a></li>
+                                {% endif %}
+                                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /main navigation -->
+                    
+                </div>
+            </div>
+            <!-- /main sidebar -->
+            {% endif %}
 
             <!-- Main content -->
-            <div class="content-wrapper">
+            <div class="">
 
                 <!-- Content area -->
                 <div class="content">
-
+                
+                    
+                    {% for message in get_flashed_messages() %}
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="alert alert-warning text-center">    
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                {{ message }}
+                            </div>
+                        </div>    
+                    {% endfor %}
 
     {% block page_content %}{% endblock %}
                 </div>
                 <!-- /content area -->
+                <!-- Footer -->
+    <div class="footer text-muted">
+        &copy; 2016. <a href="#">Library Application using Flask</a> by Loice Andia
+    </div>
+    <!-- /footer -->
 
             </div>
             <!-- /main content -->
@@ -115,11 +176,7 @@
 </div>
 {% endblock %}
 
-<!-- Footer -->
-    <div class="footer text-muted">
-        &copy; 2016. <a href="#">Library Application using Flask</a> by Loice Andia
-    </div>
-    <!-- /footer -->
+
     </div>
         <!-- /content area -->
     </div>

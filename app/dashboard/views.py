@@ -13,3 +13,11 @@ def view_books():
     '''
     book = Book.query.all()
     return render_template('dashboard/view_books.html', book=book)
+
+
+@dashboard.route('/my_books', methods=['GET', 'POST'])
+@login_required
+def my_books():
+    '''View function to books borrowed by a specific user.
+    '''
+    pass
