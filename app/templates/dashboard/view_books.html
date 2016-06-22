@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}View books % endblock %}
+
+{% block page_content %}
+<!-- Basic responsive table -->
+<div class="panel panel-flat">
+	<div class="panel-heading">
+		<h5 class="panel-title">Book List</h5>
+		<div class="heading-elements">
+			<ul class="icons-list">
+			    <li><a data-action="collapse"></a></li>
+			    <li><a data-action="reload"></a></li>
+			    <li><a data-action="close"></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table">
+		{% for item in book %}
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Book Title</th>
+					<th>Author</th>
+					<th>Category</th>
+					<th>Quantity</th>
+					<th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+   					<td class="text-center">{{i}}</td>
+   					<td class="text-center">{{item.title}}</td>
+   					<td class="text-center">{{item.author}}</td>
+   					<td class="text-center"><span>{{item.category}}</span></td>
+   					<td class="text-center"><span>{{item.quantity}}</span></td>
+				</tr>
+			</tbody>
+		{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock %}
+<!-- /basic responsive table -->

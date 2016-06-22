@@ -10,10 +10,10 @@ def signup():
     form = RegistrationForm()
     if form.validate_on_submit():
         # get the user role default
-        user_role = Role.query.filter_by(name='User').first()
-        user = User(username=form.username.data,
-                    password=form.password.data)
-        user.role = user_role
+        user = User(name=form.name.data,
+                    email=form.email.data,
+                    password=form.password.data,
+                    is_admin=form.is_admin.data,)
         db.session.add(user)
         db.session.commit()
         flash('Welcome to Library Management! \n Please login to continue.')

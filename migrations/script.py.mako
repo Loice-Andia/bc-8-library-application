@@ -12,7 +12,8 @@ down_revision = ${repr(down_revision)}
 
 from alembic import op
 import sqlalchemy as sa
-from sqlalchemy_utils import *
+import sqlalchemy_utils
+import passlib
 ${imports if imports else ""}
 
 def upgrade():
