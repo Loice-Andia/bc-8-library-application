@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_login import LoginManager, UserMixin
-from . import db
+from . import db, login_manager
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import PasswordType, force_auto_coercion
 from datetime import datetime
@@ -33,6 +33,11 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<Name %r>' % self.name
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 class Book(db.Model):

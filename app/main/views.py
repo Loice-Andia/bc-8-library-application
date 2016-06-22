@@ -12,8 +12,8 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
-            login_user(user, form.remember.data)
-            return redirect(request.args.get('next') or url_for('dashboard.view_books'))
+            login_user(user, remember=True)
+        return redirect(request.args.get('next') or url_for('dashboard.view_books'))
         flash('Invalid username or password.')
     return render_template('index.html', form=form)
 

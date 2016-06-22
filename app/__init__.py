@@ -11,11 +11,12 @@ toolbar = DebugToolbarExtension()
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'main.login'
 
 
 def create_app(config_name):
     app = Flask(__name__)
+    app.secret_key =  'hopeitworks'
 
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
@@ -30,5 +31,14 @@ def create_app(config_name):
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
+
+    from .dashboard import dashboard as dashboard_blueprint
+    app.register_blueprint(dashboard_blueprint)
+
+    from .admin import admin as admin_blueprint
+    app.register_blueprint(admin_blueprint)
+
+    from .borrow import borrow as borrow_blueprint
+    app.register_blueprint(borrow_blueprint)
 
     return app

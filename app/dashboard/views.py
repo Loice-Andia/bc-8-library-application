@@ -6,7 +6,7 @@ from ..models import Book
 #from .forms import view_books
 
 
-@dashboard.route('/view_books')
+@dashboard.route('/view_books', methods=['GET', 'POST'])
 @login_required
 def view_books():
     '''View function to return all books.
