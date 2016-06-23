@@ -123,10 +123,12 @@
                                 <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                                 <li class=""><a href="#">  <i class="icon-home4"></i> <span>Dashboard</span></a></li>
                                 <li><a href="{{ url_for('dashboard.view_books') }}">Book list</a></li>
-                                <li><a href="{{ url_for('dashboard.my_books') }}">My Books</a></li>
+                                
                                 {% if current_user.is_admin %}
                                 <li><a href="{{ url_for('admin.add_book') }}">Add a book</a></li>
                                 <li><a href="{{ url_for('admin.view_borrowed_books') }}">Borrowed books</a></li>
+                                {% else %}
+                                <li><a href="{{ url_for('dashboard.my_books') }}">My Books</a></li>
                                 {% endif %}
                                 <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
                             </ul>

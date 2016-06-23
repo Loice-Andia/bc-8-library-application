@@ -2,7 +2,7 @@ from flask import render_template, flash
 from flask_login import login_required
 from . import dashboard
 from .. import db
-from ..models import Book
+from ..models import Book, Borrow_log
 #from .forms import view_books
 
 
@@ -20,4 +20,5 @@ def view_books():
 def my_books():
     '''View function to books borrowed by a specific user.
     '''
-    pass
+    my_book = Borrow_log.query.all()
+    return render_template('dashboard/my_books.html', my_book=my_book)

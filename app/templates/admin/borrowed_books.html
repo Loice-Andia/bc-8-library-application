@@ -29,49 +29,30 @@
 
 	<div class="table-responsive">
 		<table class="table">
-		
+		{% for item in borrowed_books %}
 			<thead>
 				<tr>
-					<th>No</th>
 					<th>Book Title</th>
 					<th>Author</th>
-					<th>Category</th>
-					<th>Quantity</th>
+					<th>Borrowed by</th>
+					<th>Borrow Date</th>
 					<th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>
 				</tr>
 			</thead>
 			<tbody>
-			{% for item in book %}
 				<tr>
-   					<td class="text-center">{{item.id}}</td>
-   					<td class="text-center">{{item.title}}</td>
+   					
+   					<td class="text-center">{{item.book_id}}</td>
    					<td class="text-center">{{item.authors}}</td>
-   					<td class="text-center"><span>{{item.category}}</span></td>
-   					<td class="text-center"><span>{{item.quantity}}</span></td>
+   					<td class="text-center"><span>{{item.user_id}}</span></td>
+   					<td class="text-center"><span>{{item.borrow_date}}</span></td>
    					<td class="text-center">
-   					{% if current_user.is_admin %}
-						<ul class="icons-list">
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="icon-menu9"></i>
-								</a>
-
-								<ul class="dropdown-menu dropdown-menu-right">
-                                
-                                	<li><a href="{{ url_for('admin.edit_book') }}">Edit book</a></li>
-                                	<li><a href="{{ url_for('admin.delete_book') }}">Delete book</a></li>
-                                
-								</ul>
-							</li>
-						</ul>
-						{% else %}
-                        <a href="{{ url_for('borrow.borrow_book') }}">Borrow book</a>
-                        {% endif %}
+   					    <a href="{{ url_for('admin.return_book') }}">Return book</a>
+                        
 					</td>
 				</tr>
-				{% endfor %}
 			</tbody>
-		
+		{% endfor %}
 		</table>
 	</div>
 </div>

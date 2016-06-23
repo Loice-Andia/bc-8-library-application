@@ -27,7 +27,7 @@ class RegistrationForm(forms.LoginForm):
     password_confirmation = PasswordField('Password Confirmation',
                                           [validators.Required()])
     is_admin = BooleanField('Are you an Admin')
-    submit = SubmitField('Submit')
+    submit = SubmitField('Submit', render_kw={"class": "btn bg-blue btn-block btn-lg"})
     remember = None
 
     def validate_username(self, field):

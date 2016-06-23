@@ -4,6 +4,7 @@
 {% block title %}Add Book{% endblock %}
 
 {% block page_content %}
+<form class="form-horizontal" role="form" action='/add_book' method='POST' enctype="multipart/form-data">
 <div class="panel panel-flat">
 	<div class="panel-heading">
 		<h5 class="panel-title">Add New Book</h5>
@@ -15,11 +16,37 @@
 			</ul>
 		</div>
 	</div>
-	<div class="container">
-		
-    {{ wtf.quick_form(form) }}
+	<div class="panel-body">
+		<div class="form-group">
+			<label class="col-lg-3 control-label" for="title">Book Title</label>
+				<div class="col-lg-9">
+					<input type="text" name="title" class="form-control" placeholder="Book title ">
+				</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label" for="authors">Author(s)</label>
+				<div class="col-lg-9">
+					<input type="text" name="authors" class="form-control" placeholder="Book authors ">
+				</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label" for="category">Category</label>
+				<div class="col-lg-9">
+					<textarea type="text" name="category" class="form-control" placeholder="Categories"></textarea> 
+				</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label" for="quantity">Quantity</label>
+				<div class="col-lg-9">
+					<input type="number" name="quantity" class="form-control" placeholder="Number of Available books ">
+				</div>
+		</div>
+		<div class="text-right">
+			<button type="submit" class="btn btn-primary">Add Book <i class="icon-arrow-right14 position-right"></i></button>
+		</div>
     
+	</div>
 </div>
-</div>
+</form>
 
 {% endblock %}

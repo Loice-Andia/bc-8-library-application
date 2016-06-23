@@ -11,7 +11,7 @@ class AddBookForm():
     authors = StringField('Authors', [validators.Required()])
     category = TextAreaField('Category', [validators.Required()])
     quantity = IntegerField('Quantity', [validators.Required()])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Add Book', render_kw={"class": "form-group btn bg-blue btn-block btn-lg"})
 
     def validate_title(self, field):
         #This method checks if same book title already exists in

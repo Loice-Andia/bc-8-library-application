@@ -13,5 +13,5 @@ class LoginForm(Form):
     	[validators.DataRequired(), validators.Email()])
     password = PasswordField('Password', [validators.Required()])
     remember = BooleanField('Remember me')
-    submit = SubmitField('Log In')
+    submit = SubmitField('Log In', render_kw={"class": "form-group btn bg-blue btn-block btn-lg"})
 
