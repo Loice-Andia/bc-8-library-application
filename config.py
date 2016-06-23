@@ -7,6 +7,7 @@ class Config:
     '''This base class contains configuration
     that is common in all environments
     '''
+    CSRF_ENABLED = True
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'loloaloki'
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SQLALCHEMY_TRACK_MODIFICATIONS = True
