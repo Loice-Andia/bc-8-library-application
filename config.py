@@ -1,6 +1,6 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-os.environ['DATABASE_URL'] = "postgresql://lolo:lolo@localhost:5432/library_application"
+os.environ['DATABASE_URL'] = " postgres://ogctcvdfnhzxgh:2GzlGaS0rNu3bYVDwCUfYrsGBi@ec2-23-21-235-126.compute-1.amazonaws.com:5432/d8oo4j48fpnfp2"
 
 
 class Config:
