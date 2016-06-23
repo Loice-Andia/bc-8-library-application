@@ -42,9 +42,9 @@
 			<tbody>
 				<tr>
    					
-   					<td class="text-center">{{item.book_id}}</td>
-   					<td class="text-center">{{item.authors}}</td>
-   					<td class="text-center"><span>{{item.user_id}}</span></td>
+   					<td class="text-center">{{item.book.title}}</td>
+   					<td class="text-center">{{item.book.authors}}</td>
+   					<td class="text-center"><span>{{item.user.name|capitalize}}</span></td>
    					<td class="text-center"><span>{{item.borrow_date}}</span></td>
    					<td class="text-center">
    					    <a href="{{ url_for('admin.return_book') }}">Return book</a>
