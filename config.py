@@ -28,10 +28,10 @@ class ProductionConfig(Config):
     '''This class cofigures the production
     environment properties
     '''
-    PORT = int(os.environ.get("PORT", 5000))
-    HOST = '0.0.0.0'
+   
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    DEBUG = False
 
 
 config = {
