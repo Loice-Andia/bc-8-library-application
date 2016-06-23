@@ -20,5 +20,5 @@ def view_books():
 def my_books():
     '''View function to books borrowed by a specific user.
     '''
-    my_book = Borrow_log.query.all()
-    return render_template('dashboard/my_books.html', my_book=my_book)
+    borrowed_books = Borrow_log.query.all()
+    return render_template('dashboard/my_books.html', borrowed_books=borrowed_books)
