@@ -1,9 +1,8 @@
-from flask import render_template, flash
+from flask import render_template
 from flask_login import login_required
 from . import dashboard
 from .. import db
 from ..models import Book, Borrow_log
-#from .forms import view_books
 
 
 @dashboard.route('/view_books', methods=['GET', 'POST'])

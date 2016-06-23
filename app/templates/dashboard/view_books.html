@@ -32,11 +32,11 @@
 		
 			<thead>
 				<tr>
-					<th>No</th>
-					<th>Book Title</th>
-					<th>Author</th>
-					<th>Category</th>
-					<th>Quantity</th>
+					<th class="text-center">No</th>
+					<th class="text-center">Book Title</th>
+					<th class="text-center">Author</th>
+					<th class="text-center">Category</th>
+					<th class="text-center">Quantity</th>
 					<th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>
 				</tr>
 			</thead>
@@ -65,7 +65,7 @@
 							</li>
 						</ul>
 						{% else %}
-                        <a href="{{ url_for('borrow.borrow_book') }}">Borrow book</a>
+                        <a href="{{ url_for('borrow.borrow_book', book_id=item.id, name=current_user.name) }}">Borrow book</a>
                         {% endif %}
 					</td>
 				</tr>
