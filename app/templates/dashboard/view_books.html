@@ -58,15 +58,19 @@
 
 								<ul class="dropdown-menu dropdown-menu-right">
                                 
-                                	<li><a href="{{ url_for('admin.edit_book') }}">Edit book</a></li>
-                                	<li><a href="{{ url_for('admin.delete_book') }}">Delete book</a></li>
+                                	<li><a href="{{ url_for('admin.edit_book', book_id=item.id) }}">Edit book</a></li>
+                                	<li><a href="{{ url_for('admin.delete_book', book_id=item.id) }}">Delete book</a></li>
                                 
 								</ul>
 							</li>
 						</ul>
 						{% else %}
-                        <a href="{{ url_for('borrow.borrow_book', book_id=item.id, name=current_user.name) }}">Borrow book</a>
-                        {% endif %}
+							{% if item.quantity==0 %}
+                        	<a href="#" disabled="True">Unavailable</a>
+                        	{% else %}
+                        	<a href="{{ url_for('borrow.borrow_book', book_id=item.id, name=current_user.name) }}">Borrow book</a>
+                        	{% endif %}
+                        	{% endif %}
 					</td>
 				</tr>
 				{% endfor %}

@@ -12,15 +12,20 @@ def borrow_book(book_id, name):
      and redirects to the my books page.
     '''
     user = User.query.filter_by(name=name).first()
+    book = Book.query.filter_by(id=book_id).first()
+    
     try:
-    	print(book_id,name)
-
         form = {'user_id': user.id,
                 'book_id': book_id
                 }
   
         borrow_log = Borrow_log(**form)
+        if book.quantity >0:
+            book.quantity -=1
+        else:
+            book.quantity = 0
         db.session.add(borrow_log)
+        db.session.add(book)
         db.session.commit()
         flash('Book borrowed')
         return redirect(url_for('dashboard.my_books'))

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block page_content %}
 <div class="page-header">
@@ -29,7 +29,7 @@
 
 	<div class="table-responsive">
 		<table class="table">
-		{% for item in borrowed_books %}
+		
 			<thead>
 				<tr>
 					<th class="text-center">Book Title</th>
@@ -39,6 +39,7 @@
 					<th class="text-center" style="width: 30px;"><i class="icon-menu-open2"></i></th>
 				</tr>
 			</thead>
+			{% for item in borrowed_books %}
 			<tbody>
 				<tr>
    					
@@ -47,7 +48,7 @@
    					<td class="text-center"><span>{{item.user.name|capitalize}}</span></td>
    					<td class="text-center"><span>{{item.borrow_date}}</span></td>
    					<td class="text-center">
-   					    <a href="{{ url_for('admin.return_book') }}">Return book</a>
+   					    <a href="{{ url_for('admin.return_book', borrow_log_id=item.id) }}">Return book</a>
                         
 					</td>
 				</tr>
