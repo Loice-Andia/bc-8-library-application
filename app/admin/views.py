@@ -62,6 +62,7 @@ def return_book(borrow_log_id):
     '''View function to return a book.
     '''
     borrowed_book = Borrow_log.query.filter_by(id=borrow_log_id).first()
+    book = Book.query.filter_by(id=borrowed_book.book_id).first()
     borrow_period = now.day - borrowed_book.borrow_date.day
     if borrow_period <= 5:
         fee = 0
@@ -70,6 +71,8 @@ def return_book(borrow_log_id):
     #print fee
     try:
         db.session.delete(borrowed_book)
+        book.quantity +=1
+        db.session.add(book)
         db.session.commit()
         flash('To Pay :', fee)
         return redirect(url_for('admin.view_borrowed_books'))
